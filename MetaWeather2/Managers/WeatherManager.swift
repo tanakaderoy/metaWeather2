@@ -84,10 +84,6 @@ class WeatherManager: NSObject,ObservableObject{
     func refreshLocation(){
         gpsLocationManager.delegate = self
         gpsLocationManager.requestLocation()
-        //        fetchLocation(with: latitude, long: longitude) {[weak self] in
-        //            self?.delegate?.locationFound(self?.currentCityName ?? "Error")
-        //            print("Finished refresh")
-        //        }
     }
 
     func getWeatherForecast() -> [ConsolidatedWeather]{

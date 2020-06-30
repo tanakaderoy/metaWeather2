@@ -228,30 +228,26 @@ struct WeatherCollectionViewController_Previews: PreviewProvider {
 extension WeatherCollectionViewController: WeatherManagerDelegate{
     func fahrenheightToggle() {
         collectionView.reloadSections(IndexSet(integer: 1))
-        
     }
-    
+
     func searchSaved() {
         DispatchQueue.main.async {[weak self] in
             self?.collectionView.reloadSections(IndexSet(integer: 2))
-            
         }
     }
     
     func locationFound(_ location: String) {
         print(location)
-        DispatchQueue.main.async {
-            self.collectionView.backgroundColor = .random()
-            
+        DispatchQueue.main.async {[weak self] in
+            self?.collectionView.backgroundColor = .random()
         }
         stopRefresher()
         
     }
     
     func weatherChanged() {
-        DispatchQueue.main.async {
-            self.collectionView.backgroundColor = .random()
-            
+        DispatchQueue.main.async {[weak self] in
+            self?.collectionView.backgroundColor = .random()
         }
         collectionView.reloadSections(IndexSet(integer: 1))
     }
