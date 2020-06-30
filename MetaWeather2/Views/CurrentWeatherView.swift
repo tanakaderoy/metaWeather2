@@ -25,9 +25,9 @@ struct CurrentWeatherView: View {
                         else{
                             if self.weatherManager.farenHeight{
 
-                                Text("\(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().the_temp.toFahrenheit()))°").fontWeight(.heavy).font(.largeTitle).foregroundColor(Color.white)
+                                Text("\(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().the_temp.toFahrenheit()))°").fontWeight(.heavy).font(.largeTitle).foregroundColor(Color.init(.label))
                             }else{
-                                Text("\(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().the_temp))°").fontWeight(.heavy).font(.largeTitle).foregroundColor(Color.white)
+                                Text("\(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().the_temp))°").fontWeight(.heavy).font(.largeTitle).foregroundColor(Color.init(.label))
                             }
                             AsyncImage(url: URL(string: "\(IMAGE_BASE_URL)\(self.weatherManager.getCurrentCityWeather().weather_state_abbr).png")!, placeholder: Image(systemName: "sun.min.fill").resizable().frame(width: 30.0, height: 30.0).foregroundColor(.yellow), cache: self.cache, width: 40, height: 40)
 
@@ -36,26 +36,26 @@ struct CurrentWeatherView: View {
                     }
 
                     Text(self.weatherManager.getCurrentCityWeather().weather_state_name)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.init(.label))
                     Spacer()
 
 
                 }
                 .padding(.top)
                 Spacer()
-                Text(self.weatherManager.getCurrentCityName()).foregroundColor(Color.white).padding(.top, 20)
+                Text(self.weatherManager.getCurrentCityName()).foregroundColor(Color.init(.label)).padding(.top, 20)
                 Spacer()
                 VStack(alignment: .trailing) {
                     if self.weatherManager.getCurrentCityWeather().weather_state_abbr == "" {
 
                     }else{
-                        Text("\(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().wind_speed)) mph \(self.weatherManager.getCurrentCityWeather().wind_direction_compass)").foregroundColor(Color.white).padding(.bottom, 5)
+                        Text("\(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().wind_speed)) mph \(self.weatherManager.getCurrentCityWeather().wind_direction_compass)").foregroundColor(Color.init(.label)).padding(.bottom, 5)
                         if self.weatherManager.farenHeight{
                             Text("\(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().max_temp.toFahrenheit()))° / \(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().min_temp.toFahrenheit()))°")
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.init(.label))
                         }else{
                             Text("\(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().max_temp))° / \(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().min_temp))°")
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.init(.label))
                         }
                         Spacer()
                     }
