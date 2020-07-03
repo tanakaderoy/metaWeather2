@@ -9,7 +9,6 @@
 import UIKit
 import SwiftUI
 import CoreLocation
-import Combine
 
 
 private let reuseIdentifier = "Cell"
@@ -112,9 +111,8 @@ class WeatherCollectionViewController: UICollectionViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ForecastViewCell.reuseIdentifier, for: indexPath) as? ForecastViewCell else {
                 fatalError("Cant do it")
             }
-            let weather = WeatherManager.shared.getWeatherForecast()[indexPath.row]
-            //            cell.host(UIHostingController(rootView: ForecastView(weather: weather).background(LinearGradient(gradient: Gradient(colors: [.init(.displayP3, white: 1, opacity: 0.90), .clear]), startPoint: .bottomLeading, endPoint: .topTrailing)).cornerRadius(10)))
-            cell.configure(with: weather)
+            
+            cell.configureWith(index: indexPath.row)
             cell.backgroundColor = .clear
             
             return cell
@@ -122,8 +120,8 @@ class WeatherCollectionViewController: UICollectionViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchHistoryViewCell.reuseIdentifier, for: indexPath) as? SearchHistoryViewCell else {
                 fatalError("Cant do it")
             }
-            let results = WeatherManager.shared.getSearchHistory()
-            cell.configureWith(searchHistory: results)
+
+            cell.configure()
             cell.backgroundColor = .clear
             return cell
         default:
@@ -187,7 +185,7 @@ class WeatherCollectionViewController: UICollectionViewController {
             case 2:
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
                 //    item.contentInsets.trailing = 8
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(200)), subitems: [item])
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)), subitems: [item])
                 item.contentInsets = .init(top: 16, leading: 0, bottom: 16, trailing: 0)
                 group.contentInsets = .init(top: 8, leading: 8, bottom: 8, trailing: 8 )
                 let section = NSCollectionLayoutSection(group: group)
@@ -226,6 +224,7 @@ struct WeatherCollectionViewController_Previews: PreviewProvider {
 
 
 extension WeatherCollectionViewController: WeatherManagerDelegate{
+    
     func fahrenheightToggle() {
         collectionView.reloadSections(IndexSet(integer: 1))
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA924FE824ADFB920020C49F /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA924FE724ADFB920020C49F /* LocationModel.swift */; };
 		BAF9D31624AA3EEA0093AB17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9D31524AA3EEA0093AB17 /* AppDelegate.swift */; };
 		BAF9D31824AA3EEA0093AB17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9D31724AA3EEA0093AB17 /* SceneDelegate.swift */; };
 		BAF9D31A24AA3EEA0093AB17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9D31924AA3EEA0093AB17 /* ContentView.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA924FE724ADFB920020C49F /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		BAF9D31224AA3EEA0093AB17 /* MetaWeather2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetaWeather2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAF9D31524AA3EEA0093AB17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAF9D31724AA3EEA0093AB17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				BAF9D34124AB4FAD0093AB17 /* SearchResultModel.xcdatamodel */,
 				BAF9D33124AABBA40093AB17 /* WeatherModel.swift */,
+				BA924FE724ADFB920020C49F /* LocationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				BAF9D32A24AA413F0093AB17 /* CurrentWeatherView.swift in Sources */,
 				BAF9D34A24AB684B0093AB17 /* SectionHeader.swift in Sources */,
 				BAF9D34C24AB7F870093AB17 /* ForecastViewCell.swift in Sources */,
+				BA924FE824ADFB920020C49F /* LocationModel.swift in Sources */,
 				BAF9D34224AB4FAD0093AB17 /* SearchResultModel.xcdatamodel in Sources */,
 				BAF9D31824AA3EEA0093AB17 /* SceneDelegate.swift in Sources */,
 				BAF9D32C24AA47BF0093AB17 /* WeatherCollectionViewController.swift in Sources */,

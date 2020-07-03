@@ -9,23 +9,29 @@
 import SwiftUI
 
 struct SearchHistoryView: View {
-    init(results: [SearchResult]){
-        self.results = results
+    @ObservedObject var weatherManager = WeatherManager.shared
+    init(){
+        
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
         UITableView.appearance().tableFooterView = UIView()
     }
-    var results: [SearchResult]
     var body: some View {
-        List(results, id: \.woeid) { (res:SearchResult) in
-            VStack(alignment:.leading) {
-                Text(res.title ?? "No Content")
-                Text(res.timeStamp?.toDate() ?? "")
-            }.onTapGesture {
-                WeatherManager.shared.fetchWeather(with: res.title ?? "") {_ in 
-                    print("tapped")
+        List {
+            ForEach (weatherManager.getSearchHistory(), id: \.woeid) { (res:SearchResult) in
+                HStack {
+                    VStack(alignment:.leading) {
+                        Text(res.title ?? "No Content")
+                        Text(res.timeStamp?.toTimeStampDate() ?? "")
+                    }
+                    Spacer()
+                }.contentShape(Rectangle())
+                    .onTapGesture {
+                        self.weatherManager.fetchWeather(with: res.title ?? "") {_ in
+                            print("tapped")
+                        }
                 }
-            }
+            }.onDelete(perform: WeatherManager.shared.delete)
         }
         .background(LinearGradient(gradient: Gradient(colors: [ .clear,.init(.displayP3, white: 1, opacity: 0.4)]), startPoint: .top, endPoint: .bottomLeading)).cornerRadius(10)
     }
@@ -33,7 +39,7 @@ struct SearchHistoryView: View {
 
 struct SearchHistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchHistoryView(results: [SearchResult]())
+        SearchHistoryView()
     }
 }
 
@@ -53,8 +59,8 @@ public class SearchHistoryViewCell: UICollectionViewCell {
     }
     
     
-    public func  configureWith(searchHistory: [SearchResult]){
-        searchHistoryView = SearchHistoryView(results: searchHistory)
+    public func  configure(){
+        searchHistoryView = SearchHistoryView()
         customView = UIHostingController(rootView: searchHistoryView)
         customView!.view.translatesAutoresizingMaskIntoConstraints = false
         customView?.view.backgroundColor = .clear

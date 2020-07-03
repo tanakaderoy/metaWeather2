@@ -32,8 +32,14 @@ struct ContentView: View {
         }
 
        alert.addAction(UIAlertAction(title: "Done", style: .default) { _ in
-            let textField = alert.textFields![0] as UITextField
+        let textField = alert.textFields![0] as UITextField
         self.alertInput = textField.text ?? "Name"
+        if self.alertInput == ""{
+            let alert = UIAlertController(title: "Try Again", message: "Please Enter A search term", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            showAlert(alert: alert)
+            return
+        }
         WeatherManager.shared.fetchWeather(with: self.alertInput) {(done:Bool) in
             switch done{
             case true:

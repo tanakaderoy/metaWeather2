@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WeatherRoot: Codable {
+struct WeatherRoot: Decodable {
 
     let title: String
     let location_type: String
@@ -27,7 +27,7 @@ struct WeatherRoot: Codable {
 
 }
 
-struct ConsolidatedWeather: Codable {
+struct ConsolidatedWeather: Decodable {
     let id: Int
     let weather_state_name: String
     let weather_state_abbr: String
@@ -54,48 +54,4 @@ struct ConsolidatedWeather: Codable {
         case predictability = "predictability"
 
     }
-}
-
-
-
-
-
-
-// MARK: - Helper functions for creating encoders and decoders
-
-func newJSONDecoder() -> JSONDecoder {
-    let decoder = JSONDecoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        decoder.dateDecodingStrategy = .iso8601
-    }
-    return decoder
-}
-
-func newJSONEncoder() -> JSONEncoder {
-    let encoder = JSONEncoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        encoder.dateEncodingStrategy = .iso8601
-    }
-    return encoder
-}
-
-
-
-
-
-class Location: Codable {
-
-    let title: String
-    let location_type: String
-    let woeid: Int
-    let latt_long: String
-
-
-    enum CodingKeys: String, CodingKey {
-        case title = "title"
-        case location_type = "location_type"
-        case woeid = "woeid"
-        case latt_long = "latt_long"
-    }
-
 }

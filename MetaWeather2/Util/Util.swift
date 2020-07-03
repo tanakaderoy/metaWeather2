@@ -16,9 +16,9 @@ func showAlert(alert: UIAlertController) {
 
 private func keyWindow() -> UIWindow? {
     return UIApplication.shared.connectedScenes
-    .filter {$0.activationState == .foregroundActive}
-    .compactMap {$0 as? UIWindowScene}
-    .first?.windows.filter {$0.isKeyWindow}.first
+        .filter {$0.activationState == .foregroundActive}
+        .compactMap {$0 as? UIWindowScene}
+        .first?.windows.filter {$0.isKeyWindow}.first
 }
 
 private func topMostViewController() -> UIViewController? {
@@ -52,7 +52,17 @@ extension String {
     {
         return self.trimmingCharacters(in: CharacterSet.whitespaces)
     }
-    
+
+    func toTimeStampDate() -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/d/yy, h:mm a"
+        let date = formatter.date(from: self)
+        let formatter2 = DateFormatter()
+        formatter2.dateFormat = "EEE d"
+        let today = formatter2.string(from: Date())
+        return formatter2.string(from: date!) == today ? "Today" : formatter2.string(from: date!)
+    }
+
     func toDate() -> String{
         let formatter4 = DateFormatter()
         formatter4.dateFormat = "YYYY-MM-DD"
@@ -60,14 +70,15 @@ extension String {
         let formatter3 = DateFormatter()
         formatter3.dateFormat = "EEE d"
         let today = formatter3.string(from: Date())
-        if self == "2020-06-30"{
-            return "Today"
-        }
-        return  formatter3.string(from: date ?? Date()) == today ? "Today" : formatter3.string(from: date ?? Date())
+        //        if self == "2020-06-30"{
+        //            return "Today"
+        //        }
+        return  formatter3.string(from: date!) == today ? "Today" : formatter3.string(from: date!)
     }
 }
-//turns celcius to fahrenheit
+
 extension Double {
+    /// Turns celcius to fahrenheit
     func toFahrenheit() -> Double {
         return self * 9 / 5 + 32
     }
@@ -75,17 +86,17 @@ extension Double {
 }
 
 func getTimeStamp() -> String {
-      // get the current date and time
-      let currentDateTime = Date()
+    // get the current date and time
+    let currentDateTime = Date()
 
-      // initialize the date formatter and set the style
-      let formatter = DateFormatter()
-      formatter.timeStyle = .short
-      formatter.dateStyle = .short
+    // initialize the date formatter and set the style
+    let formatter = DateFormatter()
+    formatter.timeStyle = .short
+    formatter.dateStyle = .short
 
-      // get the date time String from the date object
-      return formatter.string(from: currentDateTime)
-  }
+    // get the date time String from the date object
+    return formatter.string(from: currentDateTime)
+}
 
 
 let IMAGE_BASE_URL = "https://www.metaweather.com/static/img/weather/png/"
@@ -104,11 +115,29 @@ extension UIImageView {
     }
 }
 
+// MARK: - Helper functions for creating encoders and decoders
+
+func newJSONDecoder() -> JSONDecoder {
+    let decoder = JSONDecoder()
+    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
+        decoder.dateDecodingStrategy = .iso8601
+    }
+    return decoder
+}
+
+func newJSONEncoder() -> JSONEncoder {
+    let encoder = JSONEncoder()
+    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
+        encoder.dateEncodingStrategy = .iso8601
+    }
+    return encoder
+}
+
 
 // MARK: - URLSession response handlers
 
 extension URLSession {
-    func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    func decodableTask<T: Decodable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return self.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 completionHandler(nil, response, error)
@@ -126,10 +155,10 @@ extension URLSession {
     }
 
     func WeatherResponseTask(with url: URL, completionHandler: @escaping (WeatherRoot?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return self.codableTask(with: url, completionHandler: completionHandler)
+        return self.decodableTask(with: url, completionHandler: completionHandler)
     }
     func LocationResponseTask(with url: URL, completionHandler: @escaping ([Location]?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return self.codableTask(with: url, completionHandler: completionHandler)
+        return self.decodableTask(with: url, completionHandler: completionHandler)
     }
 }
 
@@ -143,10 +172,10 @@ extension CGFloat {
 extension UIColor {
     static func random() -> UIColor {
         return UIColor(
-           red:   .random(),
-           green: .random(),
-           blue:  .random(),
-           alpha: 1.0
+            red:   .random(),
+            green: .random(),
+            blue:  .random(),
+            alpha: 1.0
         )
     }
 }

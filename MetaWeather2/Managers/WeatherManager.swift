@@ -93,6 +93,7 @@ class WeatherManager: NSObject,ObservableObject{
     func getSearchHistory() -> [SearchResult]{
         return results
     }
+
     func fetchLocation(with latt:String, long:String, done: @escaping ()->()){
         Api.shared.fetchWithLattLong(latt: latt, long: long) {[weak self] (res: Result<[Location], Error>) in
             switch res {
@@ -132,14 +133,14 @@ class WeatherManager: NSObject,ObservableObject{
                 }
                 guard let context = self?.context else {return}
 
-                  let newResult = SearchResult(context: context)
+                let newResult = SearchResult(context: context)
                 newResult.title = query.capitalized
-                               newResult.woeid = Int64(location.woeid)
-                               newResult.timeStamp = getTimeStamp()
-                               newResult.type = location.location_type
+                newResult.woeid = Int64(location.woeid)
+                newResult.timeStamp = getTimeStamp()
+                newResult.type = location.location_type
 
                 DispatchQueue.main.async {
-                self?.results.insert(newResult, at: 0)
+                    self?.results.insert(newResult, at: 0)
                 }
                 self?.saveSearchResults()
                 self?.delegate?.searchSaved()
@@ -155,10 +156,13 @@ class WeatherManager: NSObject,ObservableObject{
 
         }
         Api.shared.fetchWeatherWithWoeid(woeid: woeid) { [weak self](res:Result<[ConsolidatedWeather],Error>) in
+
             DispatchQueue.main.async {
                 self?.loading.toggle()
             }
+
             switch res{
+
             case .failure(let err):
                 print(err)
             case .success(let consWeather):
@@ -174,9 +178,18 @@ class WeatherManager: NSObject,ObservableObject{
     func loadSearchResults() {
         //specify data type
         let request: NSFetchRequest<SearchResult> = SearchResult.fetchRequest()
+        request.sortDescriptors =  [NSSortDescriptor(keyPath: \SearchResult.timeStamp, ascending: false)]
         fetchRequest(request: request)
     }
-
+    
+    func delete(at offsets: IndexSet){
+        offsets.forEach { (index) in
+            let search = self.results[index]
+            context.delete(search)
+        }
+        try? context.save()
+        loadSearchResults()
+    }
 
     func saveSearchResults(){
 
@@ -188,6 +201,7 @@ class WeatherManager: NSObject,ObservableObject{
         }
 
     }
+
     func fetchRequest(request: NSFetchRequest<SearchResult>){
         do {
             results = try context.fetch(request)
@@ -218,7 +232,6 @@ extension WeatherManager: CLLocationManagerDelegate{
                 }
                 print("done")
             }
-
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
