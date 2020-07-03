@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA836F2524AF5D0A00DCCD0B /* MetaWeather2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA836F2424AF5D0A00DCCD0B /* MetaWeather2Tests.swift */; };
 		BA924FE824ADFB920020C49F /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA924FE724ADFB920020C49F /* LocationModel.swift */; };
 		BAF9D31624AA3EEA0093AB17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9D31524AA3EEA0093AB17 /* AppDelegate.swift */; };
 		BAF9D31824AA3EEA0093AB17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9D31724AA3EEA0093AB17 /* SceneDelegate.swift */; };
@@ -29,7 +30,20 @@
 		BAF9D34E24AB7FBA0093AB17 /* HostingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9D34D24AB7FBA0093AB17 /* HostingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BA836F2724AF5D0A00DCCD0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAF9D30A24AA3EEA0093AB17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BAF9D31124AA3EEA0093AB17;
+			remoteInfo = MetaWeather2;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		BA836F2224AF5D0A00DCCD0B /* MetaWeather2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetaWeather2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA836F2424AF5D0A00DCCD0B /* MetaWeather2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaWeather2Tests.swift; sourceTree = "<group>"; };
+		BA836F2624AF5D0A00DCCD0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA924FE724ADFB920020C49F /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		BAF9D31224AA3EEA0093AB17 /* MetaWeather2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetaWeather2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAF9D31524AA3EEA0093AB17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +69,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BA836F1F24AF5D0A00DCCD0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BAF9D30F24AA3EEA0093AB17 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,10 +86,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA836F2324AF5D0A00DCCD0B /* MetaWeather2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BA836F2424AF5D0A00DCCD0B /* MetaWeather2Tests.swift */,
+				BA836F2624AF5D0A00DCCD0B /* Info.plist */,
+			);
+			path = MetaWeather2Tests;
+			sourceTree = "<group>";
+		};
 		BAF9D30924AA3EEA0093AB17 = {
 			isa = PBXGroup;
 			children = (
 				BAF9D31424AA3EEA0093AB17 /* MetaWeather2 */,
+				BA836F2324AF5D0A00DCCD0B /* MetaWeather2Tests */,
 				BAF9D31324AA3EEA0093AB17 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				BAF9D31224AA3EEA0093AB17 /* MetaWeather2.app */,
+				BA836F2224AF5D0A00DCCD0B /* MetaWeather2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,6 +200,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BA836F2124AF5D0A00DCCD0B /* MetaWeather2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA836F2924AF5D0A00DCCD0B /* Build configuration list for PBXNativeTarget "MetaWeather2Tests" */;
+			buildPhases = (
+				BA836F1E24AF5D0A00DCCD0B /* Sources */,
+				BA836F1F24AF5D0A00DCCD0B /* Frameworks */,
+				BA836F2024AF5D0A00DCCD0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA836F2824AF5D0A00DCCD0B /* PBXTargetDependency */,
+			);
+			name = MetaWeather2Tests;
+			productName = MetaWeather2Tests;
+			productReference = BA836F2224AF5D0A00DCCD0B /* MetaWeather2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BAF9D31124AA3EEA0093AB17 /* MetaWeather2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BAF9D32624AA3EEC0093AB17 /* Build configuration list for PBXNativeTarget "MetaWeather2" */;
@@ -195,6 +245,10 @@
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Tanaka Mazivanhanga";
 				TargetAttributes = {
+					BA836F2124AF5D0A00DCCD0B = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = BAF9D31124AA3EEA0093AB17;
+					};
 					BAF9D31124AA3EEA0093AB17 = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -214,11 +268,19 @@
 			projectRoot = "";
 			targets = (
 				BAF9D31124AA3EEA0093AB17 /* MetaWeather2 */,
+				BA836F2124AF5D0A00DCCD0B /* MetaWeather2Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BA836F2024AF5D0A00DCCD0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BAF9D31024AA3EEA0093AB17 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +294,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BA836F1E24AF5D0A00DCCD0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA836F2524AF5D0A00DCCD0B /* MetaWeather2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BAF9D30E24AA3EEA0093AB17 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,6 +328,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		BA836F2824AF5D0A00DCCD0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BAF9D31124AA3EEA0093AB17 /* MetaWeather2 */;
+			targetProxy = BA836F2724AF5D0A00DCCD0B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		BAF9D32024AA3EEC0093AB17 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -270,6 +348,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BA836F2A24AF5D0A00DCCD0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J3NVQ5AFC2;
+				INFOPLIST_FILE = MetaWeather2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanakamazivanhanga.MetaWeather2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MetaWeather2.app/MetaWeather2";
+			};
+			name = Debug;
+		};
+		BA836F2B24AF5D0A00DCCD0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J3NVQ5AFC2;
+				INFOPLIST_FILE = MetaWeather2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanakamazivanhanga.MetaWeather2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MetaWeather2.app/MetaWeather2";
+			};
+			name = Release;
+		};
 		BAF9D32424AA3EEC0093AB17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -388,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MetaWeather2/Preview Content\"";
 				DEVELOPMENT_TEAM = J3NVQ5AFC2;
@@ -399,6 +518,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanakamazivanhanga.MetaWeather2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -408,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MetaWeather2/Preview Content\"";
 				DEVELOPMENT_TEAM = J3NVQ5AFC2;
@@ -419,6 +540,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanakamazivanhanga.MetaWeather2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -427,6 +549,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BA836F2924AF5D0A00DCCD0B /* Build configuration list for PBXNativeTarget "MetaWeather2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA836F2A24AF5D0A00DCCD0B /* Debug */,
+				BA836F2B24AF5D0A00DCCD0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BAF9D30D24AA3EEA0093AB17 /* Build configuration list for PBXProject "MetaWeather2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
