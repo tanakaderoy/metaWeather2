@@ -10,7 +10,6 @@ import SwiftUI
 
 struct CurrentWeatherView: View {
     var woeid:Int
-    @Environment(\.imageCache) var cache: ImageCache
     @ObservedObject var weatherManager = WeatherManager.shared
     @State var isLoading = false
     var body: some View {
@@ -29,7 +28,7 @@ struct CurrentWeatherView: View {
                             }else{
                                 Text("\(String(format: "%0.0f", self.weatherManager.getCurrentCityWeather().the_temp))°").fontWeight(.heavy).font(.largeTitle).foregroundColor(Color.init(.label))
                             }
-                            AsyncImage(url: URL(string: "\(IMAGE_BASE_URL)\(self.weatherManager.getCurrentCityWeather().weather_state_abbr).png")!, placeholder: Image(systemName: "sun.min.fill").resizable().frame(width: 30.0, height: 30.0).foregroundColor(.yellow), cache: self.cache, width: 40, height: 40)
+                            Image(uiImage: UIImage(named:self.weatherManager.getCurrentCityWeather().weather_state_abbr)!).resizable().frame(width: 40, height: 40)
 
                         }
 
